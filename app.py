@@ -4,11 +4,13 @@ app.config["SECRET_KEY"] = '111111'
 
 category = None
 name = None
+currency=float(1.00)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     global category
-
+    global currency
+    global cur
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     products = cursor.execute('''SELECT * FROM goods''').fetchall()
@@ -16,6 +18,16 @@ def index():
     conn.close()
 
     if request.method == 'POST':
+        cur=None
+        if request.form.get('currency') != None:
+            currency = float(request.form.get('currency'))
+            print(currency)
+            if currency==1.00:
+                cur = 'грн'
+            if currency==46.05:
+                cur = 'EUR'
+            if currency==41.35:
+                cur = 'USD'
         sort = request.form.get('sort')
         reset_categorys = request.form.get('all_categorys')
         new_category = request.form.get('category')
@@ -37,9 +49,9 @@ def index():
             products = cursor.execute('''SELECT * FROM goods WHERE category=?''', (category,)).fetchall()
             conn.close()
 
-        return render_template('index.html', products=products, categorys=categorys, name=name, sort=sort)
+        return render_template('index.html', products=products, categorys=categorys, name=name, sort=sort, currency=currency, cur=cur)
 
-    return render_template('index.html', products=products, categorys=categorys, name=name)
+    return render_template('index.html', products=products, categorys=categorys, name=name, currency=currency)
 
 
 @app.route('/search')
@@ -91,7 +103,17 @@ def login():
 def cart():
     global name
     global email
+    global currency
+    global cur
     if request.method == 'POST':
+        if request.form.get('currency') != None:
+            currency = float(request.form.get('currency'))
+            if currency==1.00:
+                cur = 'грн'
+            if currency==46.05:
+                cur = 'USD'
+            if currency==41.35:
+                cur = 'EUR'
         button_value = request.form.get("submit_order")
         if button_value == 'login':
             return redirect('/login/')
@@ -111,7 +133,7 @@ def cart():
         for product in products:
             total_product = product[5]*product[6]
             total_sum+=total_product
-        return render_template('cart.html', products=products, total_sum=total_sum, name=name)
+        return render_template('cart.html', products=products, total_sum=total_sum, name=name, currency=currency, cur=cur)
     else:
         return render_template('cart.html', message=f'Ваш кошик пустий', name=name)
 

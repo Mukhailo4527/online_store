@@ -1,22 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if not message%}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                Валюта
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <form method="post">
+                        <button type="submit" name="currency" value="1.00" class="dropdown-item">Гривня₴</button>
+                        <button type="submit" name="currency" value="46.05" class="dropdown-item">Долар$</button>
+                        <button type="submit" name="currency" value="41.35" class="dropdown-item">Євро€</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endif %}
 <div class="container">
     <form action="{{ url_for('cart') }}" method="post">
     <div class="row">
-        {% for i in products %}
+        {% for p in products %}
         <div class="card m-3" style="width:180px; position: relative;">
             <div style="position: absolute; top: 5px; right: 5px;">
-                <form action="/delete/{{ i[0] }}/" method="post">
+                <form action="/delete/{{ p[0] }}/" method="post">
                     <input type="submit" value="❌" name="delete_button" class="btn btn-sm"
                            onclick="return confirm('Are you sure you want to delete this product?')">
                 </form>
             </div><br>
-            <img src="{{ i[2] }}" alt="{{ i[3] }}">
-            <h5 class="card-title">{{ i[3] }}</h5>
-            <span>{{ (i[5]*i[6])|round(2) }}грн</span>
+            <img src="{{ p[2] }}" alt="{{ p[3] }}">
+            <h5 class="card-title">{{ p[3] }}</h5>
+            <span>{{ ((p[5] * p[6])/currency)|round(2) }} {%if cur%}{{cur}}{%else%}грн{%endif%}</span><br>
             <form method="post" name="product quantity" action="/cart/"><br>
-            <input type="number" name="quantity_{{ i[0] }}" value="{{ i[6] }}" min="1" style="width:45px">
+            <input type="number" name="quantity_{{ p[0] }}" value="{{ p[6] }}" min="1" style="width:45px">
             </form>
         </div>
         {% endfor %}
@@ -24,7 +44,7 @@
 </form>
 <form method="post">
 {% if not message%}
-    <p class="mt-5">До сплати:  {{total_sum|round(2)}}грн</p>
+    <p class="mt-5">До сплати:  {{(total_sum/currency)|round(2)}}{%if cur%}{{cur}}{%else%}грн{%endif%}</p>
     {%if not name%}
     <button name="submit_order" value='login' class="btn btn-primary mt-3">Замовити все</button>
     {%else%}
