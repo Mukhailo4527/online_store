@@ -4,6 +4,7 @@ app.config["SECRET_KEY"] = '111111'
 
 category = None
 name = None
+cur = None
 currency=float(1.00)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -18,19 +19,18 @@ def index():
     conn.close()
 
     if request.method == 'POST':
-        cur=None
-        if request.form.get('currency') != None:
-            currency = float(request.form.get('currency'))
-            print(currency)
-            if currency==1.00:
-                cur = 'грн'
-            if currency==46.05:
-                cur = 'EUR'
-            if currency==41.35:
-                cur = 'USD'
         sort = request.form.get('sort')
         reset_categorys = request.form.get('all_categorys')
         new_category = request.form.get('category')
+        if request.form.get('currency') != None:
+            currency = float(request.form.get('currency'))
+            if currency:
+                if currency==1.00:
+                    cur = 'грн'
+                if currency==46.05:
+                    cur = 'EUR'
+                if currency==41.35:
+                    cur = 'USD'
 
         if reset_categorys == 'all':
             category = None
@@ -51,7 +51,7 @@ def index():
 
         return render_template('index.html', products=products, categorys=categorys, name=name, sort=sort, currency=currency, cur=cur)
 
-    return render_template('index.html', products=products, categorys=categorys, name=name, currency=currency)
+    return render_template('index.html', products=products, categorys=categorys, name=name, currency=currency, cur=cur)
 
 
 @app.route('/search')
@@ -105,7 +105,6 @@ def cart():
     global email
     global currency
     global cur
-    cur=None
     if request.method == 'POST':
         if request.form.get('currency') != None:
             currency = float(request.form.get('currency'))

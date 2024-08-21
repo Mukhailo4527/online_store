@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09bc4437-59ea-4fdf-a601-9bf7a82613d4" name="Changes" comment="Currency change">
+    <list default="true" id="09bc4437-59ea-4fdf-a601-9bf7a82613d4" name="Changes" comment="cart fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +165,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724253778645</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Currency change">
+      <option name="closed" value="true" />
+      <created>1724254412662</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1724254412663</updated>
+    </task>
+    <task id="LOCAL-00005" summary="cart fix">
+      <option name="closed" value="true" />
+      <created>1724254446658</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724254446658</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -182,6 +199,18 @@
     <MESSAGE value="gitignore" />
     <MESSAGE value="comments deleted" />
     <MESSAGE value="Currency change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Currency change" />
+    <MESSAGE value="cart fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="cart fix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
