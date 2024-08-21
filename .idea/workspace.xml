@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09bc4437-59ea-4fdf-a601-9bf7a82613d4" name="Changes" comment="cart fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+    <list default="true" id="09bc4437-59ea-4fdf-a601-9bf7a82613d4" name="Changes" comment="currency fix">
       <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724254446658</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="currency fix">
+      <option name="closed" value="true" />
+      <created>1724254097067</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1724254097067</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,7 +206,8 @@
     <MESSAGE value="comments deleted" />
     <MESSAGE value="Currency change" />
     <MESSAGE value="cart fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="cart fix" />
+    <MESSAGE value="currency fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="currency fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
