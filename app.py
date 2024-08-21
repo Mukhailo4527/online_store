@@ -105,6 +105,7 @@ def cart():
     global email
     global currency
     global cur
+    cur=None
     if request.method == 'POST':
         if request.form.get('currency') != None:
             currency = float(request.form.get('currency'))
