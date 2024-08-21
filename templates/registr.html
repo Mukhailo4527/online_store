@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block content%}
+{% if not message%}
+<div class="container">
+<h1 class="display-4 ml-5">
+    {% block title %}Реєстрація{% endblock %}</h1>
+<form method="post">
+    <div class="form-group">
+        {{form.name.label }}
+        {{form.name(class='form-control', placeholder='Іванов Іван Іванович')}}
+    </div>
+    <div class="form-group">
+        {{form.phone.label}}
+        {{form.phone(class='form-control', placeholder='+380123456789')}}
+    </div>
+    <div class="form-group">
+        {{form.email.label}}
+        {{form.email(class='form-control', placeholder='ivan@gmail.com')}}
+    </div>
+    <div class="form-group">
+{{form.address.label}}
+{{form.address(class='form-control', placeholder='вул. Січових стрільців, б.18')}}
+</div>
+        <div class="form-group">
+{{form.password.label}}
+{{form.password(class='form-control', placeholder='Password123')}}
+</div>
+    <div class="form-group">
+        {{form.submit(class='btn btn-success')}}
+    </div>
+</form>
+
+</div>
+{%else%}
+{{message}}
+{%endif%}
+{%endblock %}

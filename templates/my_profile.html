@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Профіль{% endblock %}
+{% block header %}
+<header class="p-3 bg-light shadow-sm">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center me-1">
+            <a href="/" class="btn btn-outline-primary me-1">На головну</a>
+            <a href="/cart/" class="btn btn-outline-primary me-1">Кошик</a>
+        </div>
+
+        <form action="/search" class="d-flex flex-grow-1 justify-content-center ms-3" role="search">
+            <div class="input-group" style="max-width: 500px; width: 100%; min-width: 200px">
+                <input name="search" type="search" class="form-control" placeholder="Пошук..." aria-label="Search">
+                <button type="submit" class="btn btn-primary">🔍︎</button>
+            </div>
+        </form>
+    </div>
+</header>
+
+{% endblock %}
+{% block content %}
+<h2 class="text text-info">Історія покупок:</h2>
+
+{%for product in products%}
+<p class="text text-info">Товар {{product[3]}} куплений у кількості {{product[6]}}шт. за {{product[5]*product[6]}}грн</p>
+
+{%endfor%}
+{% endblock %}

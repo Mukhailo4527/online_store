@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block header %}
+{% endblock %}
+{% block content %}
+<h2>Профіль {{ user_info[1] }}</h2>
+Номер телефону: {{ user_info[2] }}<br>
+Адреса доставки: {{ user_info[4] }}<br>
+Електронна адреса: {{ user_info[3] }}<br>
+<hr>
+{%for product in products%}
+<p>Товар {{product[3]}} успішно куплений у кількості {{product[6]}}шт. за {{product[5]*product[6]}}грн</p>
+{%endfor%}
+{% endblock %}
