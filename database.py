@@ -92,7 +92,7 @@ def delete_product_from_orders():
 def get_product(title):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    product = cursor.execute('''SELECT * FROM goods WHERE title=?''', (title,)).fetchone()
+    product = cursor.execute('''SELECT * FROM goods WHERE LOWER(title)=?''', (title,)).fetchone()
     conn.close()
     return product
 

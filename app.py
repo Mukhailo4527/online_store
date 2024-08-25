@@ -1,6 +1,6 @@
 from config import *
 app = Flask(__name__)
-app.config["SECRET_KEY"] = '111111'
+app.config["SECRET_KEY"] = 'olhoKkDduS5L8xI1'
 
 category = None
 name = None
@@ -56,7 +56,7 @@ def index():
 
 @app.route('/search')
 def search():
-    search_result = request.args.get('search')
+    search_result = request.args.get('search').lower()
     return redirect(url_for('buy', title=search_result, name=name))
 
 class UserForm(FlaskForm):
